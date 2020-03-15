@@ -49,19 +49,23 @@ void part(int n_left,
     
   if(n_left==0)R *= growth; 
    
+  //branches polar coords
   float b1a = m_ang+s_ang+tilt +random(-a_rand, a_rand);
   float b1r = R*(1+skew)*random(1-r_rand, 1+r_rand);
   float b2a = m_ang-s_ang+tilt +random(-a_rand, a_rand);
   float b2r = R*(1-skew)*random(1-r_rand, 1+r_rand);
   
+  //branches cartesian coords
   float b1x = x+cos(b1a)*b1r;
   float b1y = y+sin(b1a)*b1r;
   float b2x = x+cos(b2a)*b2r;
   float b2y = y+sin(b2a)*b2r;
     
+  //draw branches
   line(x, y, b1x, b1y);
   line(x, y, b2x, b2y);
   
+  //recursion
   if(n_left > 0){
     float seed1 = random(0, 10000);
     float seed2 = random(0, 10000);
